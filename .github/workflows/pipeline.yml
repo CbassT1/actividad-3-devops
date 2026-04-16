@@ -1,0 +1,27 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v3
+
+      - name: Simular CodeBuild
+        run: |
+          docker-compose build
+          
+      - name: Simular CodeDeploy
+        run: |
+          docker-compose up -d
+          docker ps
+          
+      - name: Validacion de la aplicacion
+        run: |
+          sleep 5
+          curl http://localhost:5000
