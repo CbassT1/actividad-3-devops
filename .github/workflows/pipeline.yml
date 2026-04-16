@@ -14,11 +14,11 @@ jobs:
 
       - name: Simular CodeBuild
         run: |
-          docker-compose build
+          docker compose build
           
       - name: Simular CodeDeploy
         run: |
-          docker-compose up -d
+          docker compose up -d
           docker ps
           
       - name: Validacion de la aplicacion
